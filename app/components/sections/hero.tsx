@@ -3,15 +3,65 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { RiDownload2Line } from 'react-icons/ri'
+import { motion, useAnimationControls } from 'framer-motion'
+import { useEffect } from 'react'
+
+function Typewriter({
+  text,
+  delay = 0,
+  duration = 0.05,
+}: {
+  text: string
+  delay?: number
+  duration?: number
+}) {
+  const controls = useAnimationControls()
+
+  useEffect(() => {
+    const animateText = async () => {
+      await new Promise((resolve) => setTimeout(resolve, delay * 1000))
+
+      for (let i = 0; i <= text.length; i++) {
+        await controls.start({
+          width: `${i}ch`,
+          transition: { duration },
+        })
+      }
+    }
+    animateText()
+  }, [text, delay, duration, controls])
+
+  return (
+    <motion.div
+      style={{
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        width: '0ch',
+        display: 'inline-block',
+      }}
+      animate={controls}
+    >
+      {text}
+    </motion.div>
+  )
+}
 
 export default function Hero() {
   return (
-    <section
+    <motion.section
       id='home'
       className='w-full flex mt-40 items-center justify-between bg-darkGreen-600 px-4 py-10 sm:px-8 xl:flex-row lg:px-40 lg:py-20'
+      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
     >
       <div className='w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-20'>
-        <div className='w-80 h-[520px] border-4 border-fontColor-50 rounded-tl-[160px] rounded-br-[160px] mb-4 flex flex-col justify-center items-center gap-8 p-8 shadow-[-4px_-4px_1px_0px_rgba(87,242,170,1.00)]'>
+        <motion.div
+          className='w-80 h-[520px] border-4 border-fontColor-50 rounded-tl-[160px] rounded-br-[160px] mb-4 flex flex-col justify-center items-center gap-8 p-8 shadow-[-4px_-4px_1px_0px_rgba(87,242,170,1.00)]'
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          initial={{ opacity: 0, y: -200 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
           <Image
             src='/profile-rounded.png'
             alt=''
@@ -76,7 +126,7 @@ export default function Hero() {
               </span>
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         <div className='flex flex-col justify-center items-center md:justify-start gap-2'>
           <div className='text-fontColor-50 p-8'>
@@ -84,10 +134,17 @@ export default function Hero() {
               <code>&lt;h1&gt;</code>
             </pre>
             <h1 className='text-4xl lg:text-7xl font-bold mt-4 mb-6 font-sans'>
-              Sou <span className='text-neonGreen-400'>Fernanda Vaz</span>,
+              <Typewriter text='Sou ' delay={1} duration={0.05} />
+              <span className='text-neonGreen-400'>
+                <Typewriter text='Fernanda Vaz' delay={1.2} duration={0.05} />
+              </span>
               <br />
-              Desenvolvedora <br />
-              Front-end<span className='text-neonGreen-400'>.</span>
+              <Typewriter text='Desenvolvedora ' delay={1.75} duration={0.05} />
+              <br />
+              <Typewriter text='Front-end' delay={2.5} duration={0.05} />
+              <span className='text-neonGreen-400'>
+                <Typewriter text='.' delay={3.5} duration={0.05} />
+              </span>
             </h1>
             <pre className='text-darkPurple-400 font-mono text-sm text-end'>
               <code>&lt;/h1&gt;</code>
@@ -127,6 +184,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

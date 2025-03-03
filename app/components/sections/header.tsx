@@ -70,7 +70,7 @@ export default function Header() {
         </div>
 
         <Drawer anchor='right' open={menuOpen} onClose={handleMenuOpen}>
-          <div className='flex flex-col items-center h-full p-4 bg-darkPurple-500 text-fontColor-50 font-semibold gap-4 justify-center'>
+          <div className='flex flex-col items-center h-full p-4 bg-darkPurple-500 text-fontColor-50 font-semibold gap-4 justify-start py-10'>
             <NavLinks onLinkClick={handleMenuOpen} />
             <Link href='#'>
               <Image

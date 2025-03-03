@@ -1,8 +1,11 @@
+'use client'
+
 import Image from 'next/image'
+import { motion } from 'motion/react'
 
 export default function About() {
   return (
-    <section
+    <motion.section
       id='about'
       className='w-full flex flex-col justify-center items-center px-4 py-10 sm:px-8 md:px-20 xl:px-40 xl:py-20 gap-10'
       style={{
@@ -11,6 +14,9 @@ export default function About() {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       }}
+      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
     >
       <Image
         src='/icons/scroll.svg'
@@ -19,10 +25,20 @@ export default function About() {
         height={140}
       />
 
-      <div className='w-56 bg-darkPurple-500 text-fontColor-50 font-bold rounded-tl-3xl rounded-br-3xl shadow-sm flex justify-center items-center p-4 border-2 border-neonGreen-400'>
+      <motion.div
+        className='w-56 bg-darkPurple-500 text-fontColor-50 font-bold rounded-tl-3xl rounded-br-3xl shadow-sm flex justify-center items-center p-4 border-2 border-neonGreen-400'
+        transition={{ duration: 0.5 }}
+        initial={{ x: -200 }}
+        whileInView={{ x: 0 }}
+      >
         <h1 className='text-2xl font-sans'>Sobre mim</h1>
-      </div>
-      <div className='flex flex-col justify-center items-center md:flex-row-reverse gap-10'>
+      </motion.div>
+      <motion.div
+        className='flex flex-col justify-center items-center md:flex-row-reverse gap-10'
+        transition={{ duration: 0.5 }}
+        initial={{ x: 200 }}
+        whileInView={{ x: 0 }}
+      >
         <div className='w-4/5 bg-darkPurple-900 rounded-3xl flex flex-col justify-center gap-4 p-4'>
           <div className='text-darkPurple-400 font-mono text-sm'>
             <code>&lt;p&gt;</code>
@@ -54,7 +70,7 @@ export default function About() {
             <code>&lt;/p&gt;</code>
           </div>
         </div>
-        <div
+        <motion.div
           className='w-80 h-[520px] border-4 border-fontColor-50 rounded-tl-[48px] rounded-br-[48px] mb-4 flex flex-col justify-center items-center gap-8 p-8 shadow-[-4px_-4px_1px_0px_rgba(87,242,170,1.00)]'
           style={{
             background: 'url(/profile-2.png)',
@@ -62,8 +78,11 @@ export default function About() {
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
           }}
+          transition={{ duration: 0.5 }}
+          initial={{ y: 200 }}
+          whileInView={{ y: 0 }}
         />
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   )
 }
