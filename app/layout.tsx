@@ -3,12 +3,12 @@ import { Epilogue, Geist, Geist_Mono, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 
 const epilogue = Epilogue({
-  variable: '--font-epilogue',
+  variable: '--font-sans',
   subsets: ['latin'],
 })
 
 const ibm = IBM_Plex_Mono({
-  variable: '--font-ibm',
+  variable: '--font-mono',
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700'],
 })

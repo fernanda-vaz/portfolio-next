@@ -38,9 +38,9 @@ export default function Projects() {
             <div className="flex flex-col justify-center items-center w-full">
                 {projects.map((item) => (
                     <div key={item.id} className="flex flex-col md:flex-row justify-between items-center border-b border-b-neonGreen-400 w-full mb-4 text-fontColor-50 gap-10">
-                        <h1 className="font-bold text-3xl sm:text-4xl px-4 py-2 sm:px-6 sm:py-4 w-full">{item.title}</h1>
+                        <h1 className="font-bold font-sans text-3xl sm:text-4xl px-4 py-2 sm:px-6 sm:py-4 w-full">{item.title}</h1>
                         
-                        <p className="w-full px-4 py-2 text-sm sm:text-base">{item.description}</p>
+                        <p className="w-full px-4 py-2 font-mono text-sm sm:text-base">{item.description}</p>
                     </div>
                 ))}
             </div>

@@ -20,14 +20,14 @@ export default function About() {
       />
 
       <div className='w-56 bg-darkPurple-500 text-fontColor-50 font-bold rounded-tl-3xl rounded-br-3xl shadow-sm flex justify-center items-center p-4 border-2 border-neonGreen-400'>
-        <h1 className='text-2xl'>Sobre mim</h1>
+        <h1 className='text-2xl font-sans'>Sobre mim</h1>
       </div>
       <div className='flex flex-col justify-center items-center md:flex-row-reverse gap-10'>
         <div className='w-4/5 bg-darkPurple-900 rounded-3xl flex flex-col justify-center gap-4 p-4'>
           <div className='text-darkPurple-400 font-mono text-sm'>
             <code>&lt;p&gt;</code>
           </div>
-          <p className='font-ibm text-sm text-fontColor-50'>
+          <p className='font-mono text-sm text-fontColor-50'>
             Sou desenvolvedora web front-end com experiência em JavaScript, HTML
             e CSS, tecnologias que me permitem criar interfaces modernas e
             eficazes. Motivada pela curiosidade e pelo entusiasmo pela

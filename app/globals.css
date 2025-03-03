@@ -1,8 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: var(--font-epilogue);
-  --font-mono: var(--font-ibm);
+ 
 
   --color-darkPurple-400: #52498c;
   --color-darkPurple-500: #302a59;
